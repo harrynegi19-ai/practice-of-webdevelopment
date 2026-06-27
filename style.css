@@ -48,6 +48,32 @@ nav {
     box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
     z-index: 100;
     backdrop-filter: blur(8px);
+
+    
+}
+nav ul li a{
+
+position:relative;
+
+}
+
+nav ul li a::after{
+
+content:"";
+position:absolute;
+left:0;
+bottom:-6px;
+width:0;
+height:2px;
+background:var(--primary-color);
+transition:.3s;
+
+}
+
+nav ul li a:hover::after{
+
+width:100%;
+
 }
 
 nav .logo {
@@ -272,6 +298,77 @@ h2::after {
 }
 
 /* --- Unified Contact & Social Layout --- */
+
+.contact-form-section{
+    width:100%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:80px 20px;
+    background:#0f172a;
+}
+
+.contact-form{
+    width:100%;
+    max-width:650px;
+    background:#1b2435;
+    padding:40px;
+    border-radius:18px;
+    box-shadow:0 10px 30px rgba(0,0,0,.35);
+}
+
+.contact-form h2{
+    color:#fff;
+    text-align:center;
+    margin-bottom:30px;
+    font-size:32px;
+}
+
+.input-group{
+    margin-bottom:20px;
+}
+
+.input-group input,
+.input-group textarea{
+
+    width:100%;
+    padding:16px;
+    border:none;
+    outline:none;
+    border-radius:10px;
+    background:#2a3448;
+    color:white;
+    font-size:16px;
+}
+
+.input-group input::placeholder,
+.input-group textarea::placeholder{
+    color:#bdbdbd;
+}
+
+textarea{
+    resize:vertical;
+}
+
+.contact-form button{
+
+    width:100%;
+    padding:15px;
+    border:none;
+    border-radius:10px;
+    background:linear-gradient(135deg,#6C63FF,#4F46E5);
+    color:white;
+    font-size:18px;
+    font-weight:600;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.contact-form button:hover{
+    transform:translateY(-2px);
+    box-shadow:0 8px 20px rgba(108,99,255,.4);
+}
+
 .contact-info {
     font-size: 1.1rem;
     margin-bottom: 10px;

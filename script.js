@@ -30,6 +30,39 @@ function typeEffect() {
     setTimeout(typeEffect, speed);
 }
 
+// Add this to your existing frontend script.js
+document.getElementById('contact-form').addEventListener('submit', async (e) => {
+    e.preventDefault(); // Stop the page from refreshing automatically
+
+    // Grab the values typed by the user in your input fields
+    const name = document.getElementById('name').value;
+    const email = document.getElementById('email').value;
+    const message = document.getElementById('message').value;
+
+    try {
+        // Shoot the data over the network to our Node server on port 5000
+        const response = await fetch('http://localhost:5000/api/contact', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ name, email, message })
+        });
+
+        const data = await response.json();
+
+        if (data.success) {
+            alert('Awesome! Your message has been saved to the MySQL database.');
+            document.getElementById('contact-form').reset(); // Clear the form inputs
+        } else {
+            alert('Oops! Database error.');
+        }
+    } catch (error) {
+        console.error('Connection error:', error);
+        alert('Could not connect to backend. Is your server running?');
+    }
+});
+
 // --- Dark/Light Preference System ---
 const darkModeBtn = document.getElementById("darkModeBtn");
 const themeIcon = darkModeBtn.querySelector("i");
